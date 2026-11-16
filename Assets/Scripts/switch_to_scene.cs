@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class switch_to_scene : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string sceneName;
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        if(string.IsNullOrWhiteSpace(sceneName))
+        {
+            Debug.LogError("Scene name is not set. Please assign a scene name in the inspector.");
+            return;
+        }
+        SceneManager.LoadScene(sceneName);
     }
 }
